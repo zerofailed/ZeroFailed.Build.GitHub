@@ -2,19 +2,21 @@
 # Copyright (c) Endjin Limited. All rights reserved.
 # </copyright>
 
+. $PSScriptRoot/release.properties.ps1
+
 # Synopsis: 
 task PublishGitHubRelease -If { $CreateGitHubRelease } -After PublishCore Init,EnsureGitHubCli,Version,{
 
     if ($PublishNuGetPackagesAsGitHubReleaseArtefacts) {
         # Evaluate the NuGet packages that need to be included in the GitHub release
-        $evaluatedNugetPackagesToPublishGlob = Invoke-Expression "`"$($NugetPackageNamesToPublishGlob)$($NugetPackagesToPublishGlobSuffix)`""
+        $evaluatedNugetPackagesToPublishGlob = Invoke-Expression "$($NugetPackageNamesToPublishGlob)"
         Write-Host "evaluatedNugetPackagesToPublishGlob: $evaluatedNugetPackagesToPublishGlob"
-        $nugetPackagesToPublish = Get-ChildItem -Path "$here/_packages" -Filter $evaluatedNugetPackagesToPublishGlob
-        Write-Host "nugetPackagesToPublish: $nugetPackagesToPublish"
+        $nugetPackagesToPublish = Get-ChildItem -Path $PackagesDir -Filter $evaluatedNugetPackagesToPublishGlob
+        Write-Host "nugetPackagesToPublish:`n`t$($nugetPackagesToPublish.Name -join "`n`t")"
         
         # Update list of GitHub release artefacts to include resolved NuGet packages
-        $script:GitHubReleaseArtefacts += $nugetPackagesToPublish
-        Write-Host "GitHubReleaseArtefacts: $GitHubReleaseArtefacts"
+        $script:GitHubReleaseArtefacts += $nugetPackagesToPublish.FullName
+        Write-Host "GitHubReleaseArtefacts:`n`t$($GitHubReleaseArtefacts -join "`n`t")"
     }
 
 
