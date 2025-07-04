@@ -115,6 +115,18 @@ PrivateData = @{
 
     } # End of PSData hashtable
 
+    # ZeroFailed metadata
+    ZeroFailed = @{
+        ExtensionDependencies = @(
+            @{
+                # Assume latest stable version
+                Name = "ZeroFailed.Build.Common"
+                GitRepository = "https://github.com/zerofailed/ZeroFailed.Build.Common"
+                Process = "tasks/build.process.ps1"
+            }
+        )
+    }
+
 } # End of PrivateData hashtable
 
 # HelpInfo URI of this module
@@ -124,4 +136,3 @@ PrivateData = @{
 # DefaultCommandPrefix = ''
 
 }
-
