@@ -18,12 +18,16 @@ function _uploadReleaseArtifact
 {
     [CmdletBinding()]
     param (
-        [Parameter()]
-        [string] $Item
+        [Parameter(Mandatory=$true)]
+        [ValidateScript({Test-Path $_})]
+        [string] $Item,
+
+        [Parameter(Mandatory=$true)]
+        [string] $Tag
     )
     
     if (!$GitHubReleaseDryRunMode) {
-        exec { & gh release upload --clobber $($GitVersion.SemVer) $Item }
+        exec { & gh release upload --clobber $Tag $Item }
     }
     else {
         Write-Host "  Skipped due to GitHubReleaseDryRunMode=True"

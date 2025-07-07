@@ -26,7 +26,7 @@ task PublishGitHubRelease -If { $CreateGitHubRelease } -After PublishCore Init,E
 
     if (!$existingRelease) {
         Write-Host "Creating new GitHub release: $($GitVersion.SemVer)"
-        _createGitHubRelease
+        _createGitHubRelease -Tag $GitVersion.SemVer
     }
     else {
         Write-Host "Updating existing GitHub release: $($GitVersion.SemVer)"
@@ -38,7 +38,7 @@ task PublishGitHubRelease -If { $CreateGitHubRelease } -After PublishCore Init,E
             if (Test-Path $releaseArtefact) {
                 Write-Host "Uploading release artefact: $(Split-Path -Leaf $releaseArtefact)"
                 Add-Content -Path $GitHubReleaseArtefactsManifestFilePath -Value $releaseArtefact
-                _uploadReleaseArtifact $releaseArtefact    
+                _uploadReleaseArtifact -Item $releaseArtefact -Tag $GitVersion.SemVer
             }
             else {
                 Write-Warning "GitHub Release artefact not found, skipping: $releaseArtefact"

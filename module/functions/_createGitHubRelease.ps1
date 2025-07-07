@@ -16,10 +16,13 @@
 function _createGitHubRelease
 {
     [CmdletBinding()]
-    param ()
+    param (
+      [Parameter(Mandatory=$true)]
+      [string] $Tag
+    )
 
     if (!$GitHubReleaseDryRunMode) {
-        exec { & gh release create $($GitVersion.SemVer) --generate-notes }
+        exec { & gh release create $Tag --generate-notes }
     }
     else {
         Write-Host "  Skipped due to GitHubReleaseDryRunMode=True"

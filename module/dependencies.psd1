@@ -1,3 +1,6 @@
+# <copyright file="dependencies.psd1" company="Endjin Limited">
+# Copyright (c) Endjin Limited. All rights reserved.
+# </copyright>
 @(
     @{
         # Assume latest stable version
