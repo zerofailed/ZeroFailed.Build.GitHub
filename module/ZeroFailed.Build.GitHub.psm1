@@ -1,4 +1,4 @@
-# <copyright file="ZeroFailed.Build.GitHub.psd1" company="Endjin Limited">
+# <copyright file="ZeroFailed.Build.GitHub.psm1" company="Endjin Limited">
 # Copyright (c) Endjin Limited. All rights reserved.
 # </copyright>
 
