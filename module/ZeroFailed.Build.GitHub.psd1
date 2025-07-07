@@ -99,7 +99,7 @@ PrivateData = @{
         ProjectUri = 'https://github.com/zerofailed/ZeroFailed.Build.GitHub'
 
         # A URL to an icon representing this module.
-        IconUri = 'https://www.nuget.org/profiles/endjin/avatar'
+        IconUri = 'https://www.nuget.org/profiles/zerofailed/avatar'
 
         # ReleaseNotes of this module
         # ReleaseNotes = ''
