@@ -1,5 +1,10 @@
 # ZeroFailed.Build.GitHub
 
+[![Build Status](https://github.com/zerofailed/ZeroFailed.Build.GitHub/actions/workflows/build.yml/badge.svg)](https://github.com/zerofailed/ZeroFailed.Build.GitHub/actions/workflows/build.yml)  
+[![GitHub Release](https://img.shields.io/github/release/zerofailed/ZeroFailed.Build.GitHub.svg)](https://github.com/zerofailed/ZeroFailed.Build.GitHub/releases)  
+[![PowerShell Gallery Version](https://img.shields.io/powershellgallery/v/Endjin.ZeroFailed.Build?color=blue)](https://www.powershellgallery.com/packages/ZeroFailed.Build.GitHub)  
+[![License](https://img.shields.io/github/license/zerofailed/ZeroFailed.Build.GitHub.svg)](https://github.com/zerofailed/ZeroFailed.Build.GitHub/blob/main/LICENSE)
+
 A [ZeroFailed](https://github.com/endjin/ZeroFailed) extension containing features that support build process integration with GitHub.
 
 ## Features Overview
