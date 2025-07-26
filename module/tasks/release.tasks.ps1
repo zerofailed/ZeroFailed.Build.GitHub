@@ -4,7 +4,7 @@
 
 . $PSScriptRoot/release.properties.ps1
 
-# Synopsis: 
+# Synopsis: Create or updates a GitHub release and attaches artifacts (e.g. NuGet packages)
 task PublishGitHubRelease -If { $CreateGitHubRelease } -After PublishCore Init,EnsureGitHubCli,Version,{
 
     if ($PublishNuGetPackagesAsGitHubReleaseArtefacts) {
