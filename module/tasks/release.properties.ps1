@@ -3,7 +3,7 @@
 # </copyright>
 
 # Synopsis: When true, a GitHub release will be created with the current version number
-$CreateGitHubRelease = [Convert]::ToBoolean((property ZF_GITHUB_SKIP_CREATE_RELEASE $false))
+$CreateGitHubRelease = -not [Convert]::ToBoolean((property ZF_GITHUB_SKIP_CREATE_RELEASE $false))
 
 # Synopsis: When true, a GitHub release will not be created. Used by the internal Pester tests.
 $GitHubReleaseDryRunMode = [Convert]::ToBoolean((property ZF_GITHUB_RELEASE_DRY_RUN_MODE $false))
