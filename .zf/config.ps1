@@ -12,7 +12,10 @@ $zerofailedExtensions = @(
 
 # Set the required build options
 $PesterTestsDir = "$here/module"
-$PesterVersion = "5.5.0"
+$PesterCodeCoveragePaths = @("$PesterTestsDir/functions")
+# The functions have no unit tests yet, so coverage is reported but not enforced. Remove this line (the default
+# threshold is 75%) when tests are added.
+$PesterCodeCoverageThreshold = 0
 $PowerShellModulesToPublish = @(
     @{
         ModulePath = "$here/module/ZeroFailed.Build.GitHub.psd1"
@@ -21,6 +24,26 @@ $PowerShellModulesToPublish = @(
         AliasesToExport = @()
     }
 )
+$PowerShellRepositories = @(
+    @{
+        Name = 'PSGallery'
+        ApiKey = { $PSRepositoryApiKey }
+        BlockPreReleaseVersions = $true
+    }
+    @{
+        Name = 'GitHubPackages'
+        SourceLocation = 'https://nuget.pkg.github.com/zerofailed/index.json'
+        ApiKey = { $env:ZF_BUILD_GITHUB_PACKAGES_TOKEN }
+        Credential = {
+            if ($env:ZF_BUILD_GITHUB_PACKAGES_TOKEN) {
+                [pscredential]::new('github-actions', (ConvertTo-SecureString $env:ZF_BUILD_GITHUB_PACKAGES_TOKEN -AsPlainText -Force))
+            }
+        }
+    }
+)
+$PSMarkdownDocsFlattenOutputPath = $true
+$PSMarkdownDocsOutputPath = './docs/functions'
+$PSMarkdownDocsIncludeModulePage = $false
 
 # Customise the build process
 task . FullBuild
