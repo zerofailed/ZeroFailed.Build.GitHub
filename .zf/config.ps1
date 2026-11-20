@@ -5,6 +5,10 @@ $zerofailedExtensions = @(
         GitRepository = "https://github.com/zerofailed/ZeroFailed.Build.PowerShell.git"
         GitRef = "main"
     }
+    @{
+        Name = "ZeroFailed.Build.GitHub"
+        Path = "./module"
+    }
 )
 
 # Load the tasks and process
@@ -44,6 +48,7 @@ $PowerShellRepositories = @(
 $PSMarkdownDocsFlattenOutputPath = $true
 $PSMarkdownDocsOutputPath = './docs/functions'
 $PSMarkdownDocsIncludeModulePage = $false
+$CreateGitHubRelease = $true
 
 # Customise the build process
 task . FullBuild

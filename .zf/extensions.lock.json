@@ -14,8 +14,19 @@
       "contentHash": "sha256:2877d270e916982677e13a4c52424f42b21a1d0e5519cf1fce44a09a12582f6a",
       "direct": false,
       "requiredBy": [
+        "ZeroFailed.Build.GitHub",
         "ZeroFailed.Build.PowerShell"
       ]
+    },
+    "ZeroFailed.Build.GitHub": {
+      "source": {
+        "type": "path",
+        "path": "../module"
+      },
+      "requested": null,
+      "resolved": null,
+      "direct": true,
+      "requiredBy": []
     },
     "ZeroFailed.Build.PowerShell": {
       "source": {
