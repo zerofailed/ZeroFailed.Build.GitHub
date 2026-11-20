@@ -17,9 +17,6 @@ $zerofailedExtensions = @(
 # Set the required build options
 $PesterTestsDir = "$here/module"
 $PesterCodeCoveragePaths = @("$PesterTestsDir/functions")
-# The functions have no unit tests yet, so coverage is reported but not enforced. Remove this line (the default
-# threshold is 75%) when tests are added.
-$PesterCodeCoverageThreshold = 0
 $PowerShellModulesToPublish = @(
     @{
         ModulePath = "$here/module/ZeroFailed.Build.GitHub.psd1"
